@@ -165,14 +165,6 @@ public class FreeAgentClient {
         return null;
     }
 
-    public List<FreeAgentExpense> getExpenses() {
-        FreeAgentExpenseWrapper expenses = freeAgentServiceInstance.getExpenses();
-        if(expenses != null) {
-            return expenses.getExpenses();
-        }
-        return null;
-    }
-
     /**
      * Retrieves the contact that matches the specified id.
      *
@@ -809,6 +801,24 @@ public class FreeAgentClient {
             }
         }
 
+        return null;
+    }
+
+    public List<FreeAgentExpense> getExpenses() {
+        FreeAgentExpenseWrapper expenses = freeAgentServiceInstance.getExpenses();
+        if(expenses != null) {
+            return expenses.getExpenses();
+        }
+        return null;
+    }
+
+    public FreeAgentExpense createExpense(FreeAgentExpense expense) {
+        if (expense != null) {
+            FreeAgentExpenseWrapper expenseWrapper = freeAgentServiceInstance.createExpense(new FreeAgentExpenseWrapper(expense));
+            if (expenseWrapper != null) {
+                return expenseWrapper.getExpense();
+            }
+        }
         return null;
     }
 

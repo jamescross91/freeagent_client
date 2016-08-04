@@ -106,6 +106,9 @@ public interface FreeAgentService {
     //
     @GET("/expenses/")
     FreeAgentExpenseWrapper getExpenses();
+
+    @POST("/expenses/")
+    FreeAgentExpenseWrapper createExpense(@Body FreeAgentExpenseWrapper expense);
 }
 
 
