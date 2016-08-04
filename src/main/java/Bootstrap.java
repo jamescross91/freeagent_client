@@ -1,5 +1,5 @@
+import com.jamescross91.amexcsv.AmexCSV;
 import com.karlnosworthy.freeagent.FreeAgentClient;
-import com.karlnosworthy.freeagent.model.FreeAgentCompany;
 import com.karlnosworthy.freeagent.model.FreeAgentExpense;
 
 import java.io.IOException;
@@ -7,11 +7,19 @@ import java.util.List;
 
 public class Bootstrap {
     public static void main(String args[]) throws IOException {
-        FreeAgentClient client = FreeAgentClient.authorise("", "v-");
-        FreeAgentCompany company = client.getCompany();
-        List<FreeAgentExpense> expenses = client.getExpenses();
-        FreeAgentExpense expense = client.createExpense(getDummyExpense());
-        System.out.println();
+        FreeAgentClient client = FreeAgentClient.authorise("", "");
+
+        AmexCSV amexCSV = new AmexCSV("/Users/James/Downloads/amex-james-jun16.csv", "/Users/James/Downloads/Statement_Jul 2016.pdf");
+        List<FreeAgentExpense> expenses = amexCSV.parse();
+
+        double tot = expenses.stream().mapToDouble(expense -> Double.parseDouble(expense.getGrossValue())).sum();
+        System.out.println("Total number of expenses found is " + expenses.size());
+        System.out.println("Total value of expenses found is " + tot);
+
+        for(FreeAgentExpense expense : expenses) {
+            client.createExpense(expense)
+            System.out.println("Submitted expense " + expense.getDescription());
+        }
     }
 
     private static FreeAgentExpense getDummyExpense() {

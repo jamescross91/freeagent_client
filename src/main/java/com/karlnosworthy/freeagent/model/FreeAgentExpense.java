@@ -172,4 +172,16 @@ public class FreeAgentExpense {
     @SerializedName("created_at")
     @Expose
     private String createdAt;
+
+    @SerializedName("attachment")
+    @Expose
+    private FreeAgentExpenseAttachment attachment;
+
+    public FreeAgentExpenseAttachment getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(FreeAgentExpenseAttachment attachment) {
+        this.attachment = attachment;
+    }
 }

@@ -19,6 +19,7 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.google.apis:google-api-services-oauth2:v1-rev95-1.20.0'
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.20.0'
+    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.1'
 }
 
 jar {
