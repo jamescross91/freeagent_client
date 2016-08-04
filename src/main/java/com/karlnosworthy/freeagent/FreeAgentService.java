@@ -100,6 +100,12 @@ public interface FreeAgentService {
 
     @DELETE("/users/{id}")
     Response deleteUser(@Path("id") String userId);
+
+    //
+    // ==== Expenses ====
+    //
+    @GET("/expenses/")
+    FreeAgentExpenseWrapper getExpenses();
 }
 
 

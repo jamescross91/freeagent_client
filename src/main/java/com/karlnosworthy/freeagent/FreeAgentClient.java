@@ -165,6 +165,14 @@ public class FreeAgentClient {
         return null;
     }
 
+    public List<FreeAgentExpense> getExpenses() {
+        FreeAgentExpenseWrapper expenses = freeAgentServiceInstance.getExpenses();
+        if(expenses != null) {
+            return expenses.getExpenses();
+        }
+        return null;
+    }
+
     /**
      * Retrieves the contact that matches the specified id.
      *
