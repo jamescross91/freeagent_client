@@ -7,9 +7,9 @@ import java.util.List;
 
 public class Bootstrap {
     public static void main(String args[]) throws IOException {
-        FreeAgentClient client = FreeAgentClient.authorise("", "");
+        FreeAgentClient client = FreeAgentClient.authorise("", "v-");
 
-        AmexCSV amexCSV = new AmexCSV("/Users/James/Downloads/amex-james-jun16.csv", "/Users/James/Downloads/Statement_Jul 2016.pdf");
+        AmexCSV amexCSV = new AmexCSV("/Users/James/Downloads/amex-ingrid-june16.csv", "/Users/James/Downloads/Statement_Jun 2016.pdf");
         List<FreeAgentExpense> expenses = amexCSV.parse();
 
         double tot = expenses.stream().mapToDouble(expense -> Double.parseDouble(expense.getGrossValue())).sum();
@@ -17,7 +17,7 @@ public class Bootstrap {
         System.out.println("Total value of expenses found is " + tot);
 
         for(FreeAgentExpense expense : expenses) {
-            client.createExpense(expense)
+            client.createExpense(expense);
             System.out.println("Submitted expense " + expense.getDescription());
         }
     }
