@@ -1,6 +1,5 @@
 package com.karlnosworthy.freeagent.model;
 
-import javax.annotation.Generated;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

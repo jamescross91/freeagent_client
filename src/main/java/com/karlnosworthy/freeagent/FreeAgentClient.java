@@ -92,9 +92,8 @@ public class FreeAgentClient {
                 .setDataStoreFactory(DATA_STORE_FACTORY).build();
 
         // authorize
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setHost(LOCALHOST)
-                                                                        .setPort(8080)
-                                                                        .build();
+        LocalServerReceiver receiver = new LocalServerReceiver.Builder().build();
+
 
         final Credential credential = new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
 

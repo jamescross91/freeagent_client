@@ -28,7 +28,7 @@ public class AmexCSV {
 
         List<FreeAgentExpense> expenses = new ArrayList<>();
         for (CSVRecord record : records) {
-            if(record.get("Colibri").equals("") || record.get("Date").equals("")) {
+            if(record.get("Colibri").equals("") || record.get("Date").equals("") || record.get("Colibri").equals(" ")) {
                 continue;
             }
 
@@ -47,13 +47,14 @@ public class AmexCSV {
         expense.setDescription(record.get("Description"));
         expense.setCategory(FreeAgentCategory.categoryForDescription(record.get("Description")));
         expense.setAttachment(getAttachment());
+        expense.setSalesTaxRate("0");
 
         return expense;
     }
 
     //Return something in the format 2011-08-24
     private String getNiceDate(String csvDate) {
-        String inputPattern = "dd MMM yyyy";
+        String inputPattern = "dd/MM/yyyy";
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern(inputPattern);
 
         String outputPattern = "yyyy-MM-dd";

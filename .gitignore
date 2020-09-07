@@ -18,3 +18,5 @@ build/
 # IntelliJ
 .idea/
 *.iml
+
+*.jar
